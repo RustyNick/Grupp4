@@ -5,12 +5,22 @@ import { TodoList } from './components/TodoList';
 /* import Modal from './components/Modal' */
 import './style.css'
 
+
+
 const initialTodos: Array<Todo> = [
-  { id: 1, text: "this is the first task", complete: true, },
-  { id: 2, text: "this is the second task", complete: false }
+  {
+    id: 1, text: "Rubrik 1", tasks: [{ text: "en text", complete: false }],
+  },
+  {
+    id: 2, text: "Rubrik 2", tasks: [{ text: "en text", complete: false }, { text: "en text", complete: false }, { text: "en text", complete: false }],
+  },
+  {
+    id: 3, text: "Rubrik 3", tasks: [{ text: "en text", complete: false }, { text: "en text", complete: false }],
+  }
 
 ]
 
+/* React.Children.map(children, function[(thisArg)]) */
 
 const App: React.FC = () => {
   const [todos, setTodos] = useState(initialTodos);
@@ -19,10 +29,7 @@ const App: React.FC = () => {
   const toggleTodo: ToggleTodo = selectedTodo => {
     const newTodos = todos.map(todo => {
       if (todo === selectedTodo) {
-        return {
-          ...todo,
-          complete: !todo.complete
-        }
+        return todo
       }
       return todo;
     });
@@ -31,7 +38,7 @@ const App: React.FC = () => {
 
   const addTodo: AddTodo = newTodo => {
     newTodo.trim() !== "" &&
-      setTodos([...todos, { text: newTodo, complete: false }])
+      setTodos([...todos, { text: newTodo, tasks: [] }])
   }
 
   return (

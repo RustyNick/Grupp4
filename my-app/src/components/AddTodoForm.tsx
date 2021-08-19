@@ -9,6 +9,7 @@ interface addTodoFromProps {
 export const AddTodoform: React.FC<addTodoFromProps> = ({ addTodo }) => {
     const [newTodo, setNewTodo] = useState("");
 
+
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setNewTodo(e.target.value);
     }
