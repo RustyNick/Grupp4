@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import { TodoListItem } from "./TodoListItem";
 
 interface TodolistProps {
