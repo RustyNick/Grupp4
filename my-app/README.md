@@ -44,3 +44,18 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+**Project text**
+Skapare till appen: Kanan, Niklas, Victor
+
+För att köra appen behöver man öppna terminalen och kör
+
+Bibliotek som krävs och snippets för att installera.
+# React with Typescript
+`npx create-react-app my-app --template typescript`
+# material UI
+npm install @material-ui/core
+# React router
+
+## `npm start`
+

@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { AddTodoform } from './components/AddTodoForm';
 import Header from './components/Head';
 import { TodoList } from './components/TodoList';
-/* import Modal from './components/Modal' */
 import './style.css'
+import Modal from './components/Modal';
+import ModalView from './components/ModalView';
 
 
 
@@ -20,11 +21,10 @@ const initialTodos: Array<Todo> = [
 
 ]
 
-/* React.Children.map(children, function[(thisArg)]) */
-
 const App: React.FC = () => {
   const [todos, setTodos] = useState(initialTodos);
-  const [isOpen, setIsOpen] = useState(false)
+  //Modalens öppna och stänga function
+  const [isModalopen, setIsModalOpen] = useState(false)
 
   const toggleTodo: ToggleTodo = selectedTodo => {
     const newTodos = todos.map(todo => {
@@ -41,21 +41,59 @@ const App: React.FC = () => {
       setTodos([...todos, { text: newTodo, tasks: [] }])
   }
 
+
+
   return (
+
     <div>
+      {isModalopen && (
+        <Modal>
+          <div style={{
+            position: 'fixed',
+            height: '100vh',
+            width: '100vw',
+            background: 'rgba(0,0,0,0.5)',
+            top: '0',
+            left: '0',
+            zIndex: 99,
+          }}
+          >
+            <div>
+              <div>
+
+                {<ModalView />}
+
+                <button style={{
+                  width: '100px',
+                  height: '30px',
+                  marginTop: '10px',
+                  borderRadius: '10px',
+                }}
+                  onClick={() => setIsModalOpen(false)}
+                >close
+                </button>
+
+              </div>
+            </div>
+          </div>
+        </Modal>
+      )
+
+      }
       <Header />
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+      }}>
+        <button onClick={() => setIsModalOpen(true)}>Open modal</button>
+      </div>
       <div className="centered" >
-        <button onClick={() => setIsOpen(true)}> Open modal</button>
         <div className="listBoard">
           <React.Fragment>
             <TodoList todos={todos} toggleTodo={toggleTodo} />
             <AddTodoform addTodo={addTodo} />
           </React.Fragment>
         </div>
-
-        {/*         <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-        </Modal> */}
-
       </div>
     </div >
   );
