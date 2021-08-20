@@ -1,3 +1,21 @@
-.complete {
+/* .complete {
     text-decoration:line-through;
+    display:flex;
+    flex-direction: row;
+} */
+.cardHead{
+    display:flex;
+    flex-direction: row;
+    margin:0px;
+    justify-content: space-between;
+}
+.listStyle{
+    list-style-type: none;
+    background-color:darkgoldenrod;
+    padding:5px;
+    margin-bottom:5px;
+}
+
+.smallListStyle{
+    background-color: cornsilk;
 }
