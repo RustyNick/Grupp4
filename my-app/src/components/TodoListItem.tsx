@@ -51,7 +51,6 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo }) 
 
                                 </input>
                                 {task.text}
-
                             </div>
 
 
