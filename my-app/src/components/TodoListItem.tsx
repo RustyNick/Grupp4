@@ -1,5 +1,5 @@
 import { Console } from 'console'
-import react from 'react'
+import React from 'react'
 import "../TodoListItem.css"
 import { TodoList } from './TodoList'
 
