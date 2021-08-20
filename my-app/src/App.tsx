@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ErrorBoundary from './components/errorBoundary';
 import { AddTodoform } from './components/AddTodoForm';
 import Header from './components/Head';
 import { TodoList } from './components/TodoList';
@@ -46,6 +47,7 @@ const App: React.FC = () => {
   return (
 
     <div>
+      <errorBoundary/>
       {isModalopen && (
         <Modal>
           <div style={{
