@@ -47,7 +47,7 @@ const App: React.FC = () => {
   return (
 
     <div>
-      <errorBoundary />
+      {/* <errorBoundary /> */}
       {isModalopen && (
         <Modal>
           <div style={{
