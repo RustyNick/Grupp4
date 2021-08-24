@@ -4,10 +4,9 @@ import { useState } from "react"
 
 interface addTodoFromProps {
     addTodo: AddTodo;
-    addDeadline: AddDeadline;
 }
 
-export const AddTodoform: React.FC<addTodoFromProps> = ({ addTodo, addDeadline }) => {
+export const AddTodoform: React.FC<addTodoFromProps> = ({ addTodo, }) => {
     const [newTodo, setNewTodo] = useState("");
     const [deadline, setDeadline] = useState("")
 
@@ -26,10 +25,9 @@ export const AddTodoform: React.FC<addTodoFromProps> = ({ addTodo, addDeadline }
     const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
         e.preventDefault();
         addTodo(newTodo);
-        addDeadline(deadline);
         setNewTodo("");
         setDeadline("")
-        console.log(addDeadline)
+        console.log()
     }
 
 

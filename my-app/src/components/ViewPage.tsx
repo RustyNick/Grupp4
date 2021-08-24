@@ -34,9 +34,7 @@ const ViewPage: React.FC = () => {
         newTodo.trim() !== "" &&
             setTodos([...todos, { text: newTodo, deadline: deadline, tasks: [] }])
     }
-    const addDeadline: AddDeadline = newDeadline => {
-        return deadline
-    }
+
 
     return (
         <div>
@@ -44,7 +42,7 @@ const ViewPage: React.FC = () => {
                 <div className="listBoard">
                     <React.Fragment>
                         <TodoList todos={todos} toggleTodo={toggleTodo} />
-                        <AddTodoform addTodo={addTodo} addDeadline={addDeadline} />
+                        <AddTodoform addTodo={addTodo} />
                     </React.Fragment>
                 </div>
             </div>
