@@ -1,62 +1,36 @@
 import React, { useState } from 'react';
+import './style.css'
 import ErrorBoundary from './components/errorBoundary';
 import { AddTodoForm } from './components/AddTodoForm';
 import Header from './components/Head';
 import { TodoList } from './components/TodoList';
-import './style.css'
 import Modal from './components/Modal';
 import ModalView from './components/ModalView';
 import ViewPage from './components/ViewPage';
-
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import ToDoPage from "./components/ToDoPage";
+import Group4 from "./components/Group4";
+import AboutPage from "./components/AboutPage";
+import { Navbar } from './components/Navbar';
 
 const App: React.FC = () => {
-  const [isModalopen, setIsModalOpen] = useState(false)
   return (
 
     <div>
-      {/* <errorBoundary /> */}
-      {isModalopen && (
-        <Modal>
-          <div style={{
-            position: 'fixed',
-            height: '100vh',
-            width: '100vw',
-            background: 'rgba(0,0,0,0.5)',
-            top: '0',
-            left: '0',
-            zIndex: 99,
-          }}
-          >
-            <div>
-              <div>
+     
+    <BrowserRouter>
+    <Navbar />
+        <div className="container">
+            <Switch>
+                
+                <Route component={ToDoPage} path="/" exact/>
+                <Route component={Group4} path="/Group4" />
+                <Route component={AboutPage} path="/AboutPage" />
 
-                {<ModalView />}
-
-                <button style={{
-                  width: '100px',
-                  height: '30px',
-                  marginTop: '10px',
-                  borderRadius: '10px',
-                }}
-                  onClick={() => setIsModalOpen(false)}
-                >close
-                </button>
-
-              </div>
-            </div>
-          </div>
-        </Modal>
-      )
-
-      }
-      <Header />
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-      }}>
-        <button onClick={() => setIsModalOpen(true)}>Open modal</button>
-      </div>
-      <ViewPage />
+                <Redirect to ="/"/>
+            </Switch>
+        </div>
+    </BrowserRouter>
     </div >
   );
 }
