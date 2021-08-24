@@ -1,6 +1,6 @@
 interface Todo {
-    id?: number;
     text: string;
+    deadline: string;
     tasks: {
         text: string;
         complete: boolean;
@@ -11,3 +11,5 @@ interface Todo {
 type ToggleTodo = (selectedTodo: Todo) => void;
 
 type AddTodo = (newTodo: string) => void;
+
+type AddDeadline = (newDeadline: string) => void;

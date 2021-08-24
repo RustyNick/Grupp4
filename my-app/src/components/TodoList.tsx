@@ -6,7 +6,7 @@ interface TodolistProps {
     toggleTodo: ToggleTodo;
 }
 
-export const TodoList: React.FC<TodolistProps> = ({ todos, toggleTodo }) => {
+export const TodoList: React.FC<TodolistProps> = ({ todos, toggleTodo, }) => {
     return (
 
         <ul>
