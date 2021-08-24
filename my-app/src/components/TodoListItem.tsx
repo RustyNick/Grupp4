@@ -8,13 +8,14 @@ import { initialTodos } from './ViewPage'
 interface TodoListItemProps {
     todo: Todo;
     toggleTodo: ToggleTodo;
-    removeTask(taskNameToDelete: string): void;
+    removeProject(projectToDelete: string): void;
+    removeTask(taskToDelete: string): void;
 
 }
 
 
 
-export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo, removeTask }) => {
+export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo, removeProject, removeTask }) => {
     const completeCheck = (todo: Todo) => {
         return true
     }
@@ -39,7 +40,7 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo, re
                     <button
                         type="button"
                         onClick={() => {
-                            removeTask(todo.text)
+                            removeProject(todo.text)
                         }}
                     > X
                     </button>
@@ -50,29 +51,29 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo, re
                 </div>
                 <div className="smallListStyle">
 
-                    {/* The small task render */}
-                    {todo.tasks.map((task) => {
+                    {/* --------------------------------The small task render -------------------------------------*/}
+                    {todo.task.map((task) => {
                         return (
-                            /*!!! ! */
                             <div className="smallTask">
                                 <label>
                                     <p>
+                                        {/* ----------Materialize styleing on this input!!-------- */}
                                         <input type="checkbox" className="filled-in" />
                                         <span></span>
                                     </p>
                                 </label>
-                                {/* ----------Materialize styleing on this input!!-------------------------- */}
 
-                                {task.text}
-                                {task.complete}
+                                {task.textName}
+
                                 <button onClick={() => {
-                                    console.log(task)
+                                    removeTask(task.textName)
                                 }} >X</button>
                             </div>
 
 
                         )
                     })}
+                    {/* ---------------------------smol task render ----------------------------------------!!!! */}
                 </div>
 
             </label>

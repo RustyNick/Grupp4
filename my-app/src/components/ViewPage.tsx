@@ -5,13 +5,13 @@ import { AddTodoForm } from './AddTodoForm';
 
 export const initialTodos: Array<Todo> = [
     {
-        text: "Rubrik 1", deadline: "Deadline", tasks: [{ text: "en text", complete: false }],
+        text: "Rubrik 1", deadline: "Deadline", task: [{ textName: "en text", }],
     },
     {
-        text: "Städa", deadline: "08/08/2021", tasks: [{ text: "Damsuga", complete: false }, { text: "Moppa golvet", complete: false }, { text: "Torka ytor", complete: false }],
+        text: "Städa", deadline: "08/08/2021", task: [{ textName: "Damsuga", }, { textName: "Moppa golvet", }, { textName: "Torka ytor", }],
     },
     {
-        text: "Handla", deadline: "10/10/2021", tasks: [{ text: "Äpplen", complete: false }, { text: "Vaniljsås", complete: false }],
+        text: "Handla", deadline: "10/10/2021", task: [{ textName: "Äpplen", }, { textName: "Vaniljsås", }],
     }
 
 ]
@@ -30,30 +30,35 @@ const ViewPage = () => {
         setTodos(newTodos);
     }
 
-    /*     const removeTask = (taskNameToDelete: string): void => {
-            setTodos(todos.filter((todo) => {
-                return todo.text != taskNameToDelete
-    
-            }))
-        } */
 
-    const removeTask: RemoveTask = taskNameToDelete => {
+    const removeProject: RemoveProject = projectToDelete => {
         setTodos(todos.filter((todo) => {
-            return todo.text != taskNameToDelete
+            return todo.text !== projectToDelete
 
         }))
     }
 
+    const removeTask: RemoveTask = taskToDelete => {
+        for (let i = 0; i < todos.length; i++) {
+            const todoTask = todos[i].task;
+
+            todoTask.filter((task) => {
+                return task.textName !== taskToDelete
+            })
+
+        }
+    }
+
     const addTodo: AddTodo = newTodo => {
         newTodo.trim() !== "" &&
-            setTodos([...todos, { text: newTodo, deadline: deadline, tasks: [] }])
+            setTodos([...todos, { text: newTodo, deadline: deadline, task: [] }])
     }
 
 
     const showArray = () => {
         for (let i = 0; i < todos.length; i++) {
             const todoTask = todos[i];
-            console.log(todoTask.tasks)
+            console.log(todoTask, todoTask.task)
 
         }
     }
@@ -63,7 +68,7 @@ const ViewPage = () => {
             <div className="centered" >
                 <div id="listBoard" className="listBoard">
                     <React.Fragment>
-                        <TodoList todos={todos} toggleTodo={toggleTodo} removeTask={removeTask} />
+                        <TodoList todos={todos} toggleTodo={toggleTodo} removeProject={removeProject} removeTask={removeTask} />
                         <AddTodoForm addTodo={addTodo} />
                     </React.Fragment>
                 </div>
