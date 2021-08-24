@@ -1,11 +1,13 @@
 import React from 'react';
-
-<h1>banan3</h1>
+import { useHistory } from 'react-router-dom'
 
 const Group4 = () => {
+    const history = useHistory()
     return (
-        <div className="header">
-            hi
+        <div >
+            <h4>sida av Group4 test</h4>
+<button className="btn" onClick={() => history.push('/')}>Back to START</button>
+
            
         </div>
     )
