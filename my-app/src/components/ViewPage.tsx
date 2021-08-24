@@ -1,6 +1,6 @@
-import React, { FC, ChangeEvent, useState } from 'react';
+import React, { useState } from 'react';
 import { TodoList } from './TodoList';
-import { AddTodoform } from './AddTodoForm';
+import { AddTodoForm } from './AddTodoForm';
 
 
 export const initialTodos: Array<Todo> = [
@@ -16,7 +16,7 @@ export const initialTodos: Array<Todo> = [
 
 ]
 
-const ViewPage: React.FC = () => {
+const ViewPage = () => {
     const [todos, setTodos] = useState(initialTodos);
     const [deadline, setDeadline] = useState("")
 
@@ -30,23 +30,45 @@ const ViewPage: React.FC = () => {
         setTodos(newTodos);
     }
 
+    /*     const removeTask = (taskNameToDelete: string): void => {
+            setTodos(todos.filter((todo) => {
+                return todo.text != taskNameToDelete
+    
+            }))
+        } */
+
+    const removeTask: RemoveTask = taskNameToDelete => {
+        setTodos(todos.filter((todo) => {
+            return todo.text != taskNameToDelete
+
+        }))
+    }
+
     const addTodo: AddTodo = newTodo => {
         newTodo.trim() !== "" &&
             setTodos([...todos, { text: newTodo, deadline: deadline, tasks: [] }])
     }
 
 
+    const showArray = () => {
+        for (let i = 0; i < todos.length; i++) {
+            const todoTask = todos[i];
+            console.log(todoTask.tasks)
+
+        }
+    }
+
     return (
         <div>
             <div className="centered" >
-                <div className="listBoard">
+                <div id="listBoard" className="listBoard">
                     <React.Fragment>
-                        <TodoList todos={todos} toggleTodo={toggleTodo} />
-                        <AddTodoform addTodo={addTodo} />
+                        <TodoList todos={todos} toggleTodo={toggleTodo} removeTask={removeTask} />
+                        <AddTodoForm addTodo={addTodo} />
                     </React.Fragment>
                 </div>
             </div>
-
+            <button onClick={showArray}>Show array</button>
         </div>
 
     );

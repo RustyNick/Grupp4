@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ErrorBoundary from './components/errorBoundary';
-import { AddTodoform } from './components/AddTodoForm';
+import { AddTodoForm } from './components/AddTodoForm';
 import Header from './components/Head';
 import { TodoList } from './components/TodoList';
 import './style.css'
