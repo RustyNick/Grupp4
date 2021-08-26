@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from './components/ThemeProvider';
 import './style.css'
-import ErrorBoundary from './components/errorBoundary';
 import { AddTodoform } from './components/AddTodoForm';
 import Header from './components/Head';
 import { TodoList } from './components/TodoList';
@@ -14,19 +14,22 @@ import AboutPage from "./components/AboutPage";
 import { Navbar } from './components/Navbar';
 
 const App: React.FC = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   return (
 
     <div>
      
     <BrowserRouter>
     <Navbar />
+    <button onClick={toggleTheme}>
+        Bytt till {theme === "ljust" ? "mörkt" : "ljust"} läge
+      </button>
         <div className="container">
             <Switch>
-                
                 <Route component={ToDoPage} path="/" exact/>
                 <Route component={Group4} path="/Group4" />
                 <Route component={AboutPage} path="/AboutPage" />
-
                 <Redirect to ="/"/>
             </Switch>
         </div>
