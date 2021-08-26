@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent } from "react"
 import { useState } from "react"
-import { initialTodos } from "./ViewPage";
+import { Button, Input } from '@material-ui/core'
 
 interface addTodoFromProps {
     addTodo: AddTodo;
@@ -34,10 +34,10 @@ export const AddTodoForm: React.FC<addTodoFromProps> = ({ addTodo, }) => {
         <div>
 
             <form>
-                <input type="text" name="task" value={newTodo} onChange={handleChange} placeholder="Namn på task..." />
-                <input type="date" name="deadline" value={deadline} onChange={handleChange} placeholder="timer..." />
-                <button type="submit" onClick={handleSubmit}>
-                    Add todo</button>
+                <Input type="text" name="task" value={newTodo} onChange={handleChange} placeholder="Namn på task..." />
+                <Input type="date" name="deadline" value={deadline} onChange={handleChange} placeholder="timer..." />
+                <Button size="large" variant="contained" color="primary" type="submit" onClick={handleSubmit}>
+                    Add todo</Button>
 
             </form>
         </div>
