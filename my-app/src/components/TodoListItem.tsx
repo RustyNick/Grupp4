@@ -1,19 +1,19 @@
 import React from 'react'
 import "../TodoListItem.css"
-import { TodoList } from './TodoList'
-import { initialTodos } from './ViewPage'
+import { AddTaskForm } from './AddTaskForm'
 
 
 interface TodoListItemProps {
     todo: Todo;
     toggleTodo: ToggleTodo;
-
+    removeProject(projectId: string): void;
+    removeTask(taskId: string): void;
+    addTask: AddTask;
 }
 
 
 
-export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo }) => {
-
+export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo, removeProject, removeTask, addTask }) => {
     const completeCheck = (todo: Todo) => {
         return true
     }
@@ -24,48 +24,65 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo }) 
             className="listStyle">
             <label className={completeCheck(todo) ? "complete" : undefined}>
                 <div className="cardHead">
+
+                    <h3>
+                        {todo.text}     {/* Rubrik renders here */}
+                    </h3>
                     <input
                         type="checkbox"
                         checked={completeCheck(todo)}
                         onChange={() => toggleTodo(todo)
                         }
                     />
-
-                    <h3>
-                        {todo.text}     {/* Rubrik renders here */}
-                    </h3>
                     {todo.deadline} {/* Deadline renders here */}
                     <button
                         type="button"
                         onClick={() => {
-                            initialTodos.splice(0, 1)
-                            console.log(initialTodos)
-                            return initialTodos
-                        }
-                        }> X
+                            removeProject(todo.id)
+                        }}
+                    > X
                     </button>
                 </div>
                 <div>
-                    <input type="text" placeholder="todos..."></input>
-                    <button>Add</button>
+                    {/* Add task button */}
+                    {/* <input type="text" placeholder="todos..."></input>
+                    <button type="button" onClick={() => {
+                        console.log("clicked add button")
+                    }}>Add</button> */}
+
+
+                    <React.Fragment>
+                        <AddTaskForm addTask={addTask} todoId={todo.id} />
+                    </React.Fragment>
+
                 </div>
                 <div className="smallListStyle">
-                    {todo.tasks.map((task) => {
+
+                    {/* --------------------------------The small task render -------------------------------------*/}
+                    {todo.task.map((task) => {
                         return (
-
                             <div className="smallTask">
-                                <input
-                                    type="checkbox"
-                                >
+                                <label>
+                                    <p>
+                                        {/* ----------Materialize styleing on this input!!-------- */}
+                                        <input type="checkbox" className="filled-in" />
+                                        <span></span>
+                                    </p>
+                                </label>
 
-                                </input>
-                                {task.text}
-                                <button>X</button>
+                                {task.textName}
+
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        removeTask(task.id)
+                                    }} >X</button>
                             </div>
 
 
                         )
                     })}
+                    {/* ---------------------------smol task render ----------------------------------------!!!! */}
                 </div>
 
             </label>

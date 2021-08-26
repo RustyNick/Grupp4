@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from './components/ThemeProvider';
 import './style.css'
-import { AddTodoform } from './components/AddTodoForm';
+import ErrorBoundary from './components/errorBoundary';
+import { AddTodoForm } from './components/AddTodoForm';
 import Header from './components/Head';
 import { TodoList } from './components/TodoList';
 import Modal from './components/Modal';
@@ -19,21 +20,21 @@ const App: React.FC = () => {
   return (
 
     <div>
-     
-    <BrowserRouter>
-    <Navbar />
-    <button onClick={toggleTheme}>
-        Bytt till {theme === "ljust" ? "mörkt" : "ljust"} läge
-      </button>
+
+      <BrowserRouter>
+        <Navbar />
         <div className="container">
-            <Switch>
-                <Route component={ToDoPage} path="/" exact/>
-                <Route component={Group4} path="/Group4" />
-                <Route component={AboutPage} path="/AboutPage" />
-                <Redirect to ="/"/>
-            </Switch>
+          <button onClick={toggleTheme}>
+            Bytt till {theme === "ljust" ? "mörkt" : "ljust"} läge
+          </button>
+          <Switch>
+            <Route component={ToDoPage} path="/" exact />
+            <Route component={Group4} path="/Group4" />
+            <Route component={AboutPage} path="/AboutPage" />
+            <Redirect to="/" />
+          </Switch>
         </div>
-    </BrowserRouter>
+      </BrowserRouter>
     </div >
   );
 }

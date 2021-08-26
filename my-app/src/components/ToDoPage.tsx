@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import '../style.css'
-import ErrorBoundary from './ErrorBoundary';
+/* import ErrorBoundary from './ErrorBoundary'; */
 import { useHistory } from 'react-router-dom'
-import { AddTodoform } from './AddTodoForm';
+import { AddTodoForm } from './AddTodoForm';
 import Header from './Head';
 import { TodoList } from './TodoList';
 import Modal from './Modal';
@@ -10,11 +10,11 @@ import ModalView from './ModalView';
 import ViewPage from './ViewPage';
 
 const ToDoPage: React.FC = () => {
-    const history = useHistory()
-    const [isModalopen, setIsModalOpen] = useState(false)
-    return (
-        <div >
-             
+  const history = useHistory()
+  const [isModalopen, setIsModalOpen] = useState(false)
+  return (
+    <div >
+
       {isModalopen && (
         <Modal>
           <div style={{
@@ -59,8 +59,8 @@ const ToDoPage: React.FC = () => {
 
       <ViewPage />
 
-        </div>
-    )
+    </div>
+  )
 }
 
 export default ToDoPage

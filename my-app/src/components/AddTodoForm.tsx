@@ -1,12 +1,12 @@
-import { setMaxListeners } from "process";
-import react, { ChangeEvent, FormEvent } from "react"
+import { ChangeEvent, FormEvent } from "react"
 import { useState } from "react"
+import { initialTodos } from "./ViewPage";
 
 interface addTodoFromProps {
     addTodo: AddTodo;
 }
 
-export const AddTodoform: React.FC<addTodoFromProps> = ({ addTodo, }) => {
+export const AddTodoForm: React.FC<addTodoFromProps> = ({ addTodo, }) => {
     const [newTodo, setNewTodo] = useState("");
     const [deadline, setDeadline] = useState("")
 
@@ -16,26 +16,31 @@ export const AddTodoform: React.FC<addTodoFromProps> = ({ addTodo, }) => {
         if (e.target.name === "task") {
             setNewTodo(e.target.value)
         } else {
-            setDeadline(e.target.value)
+            setDeadline(String(e.target.value));
         }
-        console.log(deadline)
+
     }
 
 
     const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        addTodo(newTodo);
+        addTodo(newTodo, deadline);
         setNewTodo("");
         setDeadline("")
-        console.log()
     }
 
 
-    return <form>
-        <input type="text" name="task" value={newTodo} onChange={handleChange} placeholder="Namn på task..." />
-        <input type="date" name="deadline" value={deadline} onChange={handleChange} placeholder="timer..." />
-        <button type="submit" onClick={handleSubmit}>
-            Add todo</button>
+    return (
+        <div>
 
-    </form>
+            <form>
+                <input type="text" name="task" value={newTodo} onChange={handleChange} placeholder="Namn på task..." />
+                <input type="date" name="deadline" value={deadline} onChange={handleChange} placeholder="timer..." />
+                <button type="submit" onClick={handleSubmit}>
+                    Add todo</button>
+
+            </form>
+        </div>
+
+    )
 }
