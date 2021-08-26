@@ -9,7 +9,6 @@ interface TodoListItemProps {
     removeProject(projectId: string): void;
     removeTask(taskId: string): void;
     addTask: AddTask;
-
 }
 
 
@@ -53,7 +52,7 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo, re
 
 
                     <React.Fragment>
-                        <AddTaskForm addTask={addTask} />
+                        <AddTaskForm addTask={addTask} todoId={todo.id} />
                     </React.Fragment>
 
                 </div>

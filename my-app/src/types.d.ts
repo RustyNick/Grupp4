@@ -11,11 +11,9 @@ interface Todo {
 
 type ToggleTodo = (selectedTodo: Todo) => void;
 
-type AddTodo = (newTodo: string) => void;
+type AddTodo = (newTodo: string, newDeadline: string) => void;
 
-type AddTask = (newTask: string) => void;
-
-type AddDeadline = (newDeadline: string) => void;
+type AddTask = (newTask: string, todoId: string) => void;
 
 type RemoveProject = (projectId: string) => void;
 

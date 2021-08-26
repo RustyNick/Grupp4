@@ -13,19 +13,21 @@ export const AddTodoForm: React.FC<addTodoFromProps> = ({ addTodo, }) => {
 
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-        setNewTodo(e.target.value)
+        if (e.target.name === "task") {
+            setNewTodo(e.target.value)
+        } else {
+            setDeadline(String(e.target.value));
+        }
 
     }
 
 
     const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        addTodo(newTodo);
+        addTodo(newTodo, deadline);
         setNewTodo("");
         setDeadline("")
-        console.log(initialTodos)
     }
-
 
 
     return (

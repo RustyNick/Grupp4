@@ -3,10 +3,11 @@ import { useState } from "react"
 import { initialTodos } from "./ViewPage";
 
 interface addTaskFromProps {
+    todoId: string;
     addTask: AddTask;
 }
 
-export const AddTaskForm: React.FC<addTaskFromProps> = ({ addTask, }) => {
+export const AddTaskForm: React.FC<addTaskFromProps> = ({ addTask, todoId }) => {
     const [newTask, setNewTask] = useState("");
 
 
@@ -19,7 +20,7 @@ export const AddTaskForm: React.FC<addTaskFromProps> = ({ addTask, }) => {
 
     const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        addTask(newTask);
+        addTask(newTask, todoId);
         setNewTask("");
     }
 

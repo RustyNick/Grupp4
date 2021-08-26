@@ -20,15 +20,13 @@ export const initialTodos: Array<Todo> = [
 
 ]
 
-    
+
 const ViewPage = () => {
 
     const theTask = initialTodos.map((task) => {
         return task.task
     })
-    const [id, setid] = useState(String)
     const [todos, setTodos] = useState(initialTodos);
-    const [deadline, setDeadline] = useState("")
     /* const [tasks, SetTasks] = useState(theTask) */
 
 
@@ -41,12 +39,12 @@ const ViewPage = () => {
         });
         setTodos(newTodos);
     }
-    
+
     useEffect(() => {
         const saved = JSON.parse(localStorage.getItem('todos') || '[]') as Todo[]
         setTodos(saved)
     }, [])
-    
+
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos])
@@ -78,28 +76,47 @@ const ViewPage = () => {
         setTodos(updatedTodos)
     }
 
-    const addTask: AddTask = (newTask) => {
+    const addTask: AddTask = (newTask, todoId) => {
+
+        const updatedTasks = todos.map((todo) => {
+            if (todo.id === todoId) {
+                todo.task.push({ id: genreateId(), textName: newTask, })
+            }
+
+            return todo
+        })
+
+
+        console.log(updatedTasks)
         console.log("AddTask")
-        /*  const updatedTasks = todos.map((todo) => {
-             const tasks = todo.task.filter((task) => {
-                 newTask = task.textName
-                 console.log(newTask)
-                 return newTask
-             })
-             const updatedTodos = todo
-             updatedTodos.task = tasks
-             console.log(updatedTodos)
-             return updatedTodos
-         })
-         setTodos([...updatedTasks, { id: id, textName: "najs", }]) */
-
+        setTodos(updatedTasks)
     }
 
 
-    const addTodo: AddTodo = newTodo => {
+
+
+
+    /*     const tasks = todo.task.filter((task) => {
+            newTask = task.textName
+            console.log(newTask)
+            return newTask
+        }) */
+    /*     const updatedTodos = todo
+            updatedTodos.task = tasks
+     
+            console.log(updatedTodos)
+            return updatedTodos */
+    /* } */
+    /* setTodos(updatedTasks) */
+
+
+
+
+    const addTodo: AddTodo = (newTodo, newDeadline) => {
         newTodo.trim() !== "" &&
-            setTodos([...todos, { id: id, text: newTodo, deadline: deadline, task: [] }])
+            setTodos([...todos, { id: genreateId(), text: newTodo, deadline: newDeadline, task: [] }])
     }
+
 
 
     const showArray = () => {
