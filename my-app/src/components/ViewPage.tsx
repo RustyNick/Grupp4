@@ -1,4 +1,4 @@
-import React, { FC, ChangeEvent, useState } from 'react';
+import React, { FC, ChangeEvent, useState, useEffect } from 'react';
 import { TodoList } from './TodoList';
 import { AddTodoform } from './AddTodoForm';
 
@@ -16,10 +16,11 @@ export const initialTodos: Array<Todo> = [
 
 ]
 
+
 const ViewPage: React.FC = () => {
     const [todos, setTodos] = useState(initialTodos);
     const [deadline, setDeadline] = useState("")
-
+    
     const toggleTodo: ToggleTodo = selectedTodo => {
         const newTodos = todos.map(todo => {
             if (todo === selectedTodo) {
@@ -29,6 +30,16 @@ const ViewPage: React.FC = () => {
         });
         setTodos(newTodos);
     }
+    
+    useEffect(() => {
+        const saved = JSON.parse(localStorage.getItem('todos') || '[]') as Todo[]
+        setTodos(saved)
+    }, [])
+    
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(todos))
+    }, [todos])
+
 
     const addTodo: AddTodo = newTodo => {
         newTodo.trim() !== "" &&
