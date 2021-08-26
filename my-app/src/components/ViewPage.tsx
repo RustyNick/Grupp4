@@ -2,23 +2,35 @@ import React, { useState } from 'react';
 import { TodoList } from './TodoList';
 import { AddTodoForm } from './AddTodoForm';
 
+const genreateId = () => {
+    return '_' + Math.random().toString(36).substr(2, 9);
+}
+
 
 export const initialTodos: Array<Todo> = [
     {
-        text: "Rubrik 1", deadline: "Deadline", task: [{ textName: "en text", }],
+        id: genreateId(), text: "Rubrik 1", deadline: "Deadline", task: [{ id: genreateId(), textName: "en text", }],
     },
     {
-        text: "Städa", deadline: "08/08/2021", task: [{ textName: "Damsuga", }, { textName: "Moppa golvet", }, { textName: "Torka ytor", }],
+        id: genreateId(), text: "Städa", deadline: "08/08/2021", task: [{ id: genreateId(), textName: "Damsuga", }, { id: genreateId(), textName: "Moppa golvet", }, { id: genreateId(), textName: "Torka ytor", }],
     },
     {
-        text: "Handla", deadline: "10/10/2021", task: [{ textName: "Äpplen", }, { textName: "Vaniljsås", }],
+        id: genreateId(), text: "Handla", deadline: "10/10/2021", task: [{ id: genreateId(), textName: "Äpplen", }, { id: genreateId(), textName: "Vaniljsås", }],
     }
 
 ]
 
+
 const ViewPage = () => {
+
+    const theTask = initialTodos.map((task) => {
+        return task.task
+    })
+    const [id, setid] = useState(String)
     const [todos, setTodos] = useState(initialTodos);
     const [deadline, setDeadline] = useState("")
+    /* const [tasks, SetTasks] = useState(theTask) */
+
 
     const toggleTodo: ToggleTodo = selectedTodo => {
         const newTodos = todos.map(todo => {
@@ -30,28 +42,53 @@ const ViewPage = () => {
         setTodos(newTodos);
     }
 
-
-    const removeProject: RemoveProject = projectToDelete => {
+    const removeProject: RemoveProject = projectId => {
         setTodos(todos.filter((todo) => {
-            return todo.text !== projectToDelete
+            return todo.id !== projectId
 
         }))
     }
 
-    const removeTask: RemoveTask = taskToDelete => {
-        for (let i = 0; i < todos.length; i++) {
-            const todoTask = todos[i].task;
+    const removeTask: RemoveTask = taskId => {
 
-            todoTask.filter((task) => {
-                return task.textName !== taskToDelete
+        const updatedTodos = todos.map((todo) => {
+            const tasks = todo.task.filter((task) => {
+                if (task.id === taskId) {
+                    /* ignore */
+                    return false
+                    /* return true */
+                }
+                /* tar id */
+                return true
             })
-
-        }
+            const updatedTodos = todo
+            updatedTodos.task = tasks
+            return updatedTodos
+        })
+        setTodos(updatedTodos)
     }
+
+    const addTask: AddTask = (newTask) => {
+        console.log("AddTask")
+        /*  const updatedTasks = todos.map((todo) => {
+             const tasks = todo.task.filter((task) => {
+                 newTask = task.textName
+                 console.log(newTask)
+                 return newTask
+             })
+             const updatedTodos = todo
+             updatedTodos.task = tasks
+             console.log(updatedTodos)
+             return updatedTodos
+         })
+         setTodos([...updatedTasks, { id: id, textName: "najs", }]) */
+
+    }
+
 
     const addTodo: AddTodo = newTodo => {
         newTodo.trim() !== "" &&
-            setTodos([...todos, { text: newTodo, deadline: deadline, task: [] }])
+            setTodos([...todos, { id: id, text: newTodo, deadline: deadline, task: [] }])
     }
 
 
@@ -68,7 +105,7 @@ const ViewPage = () => {
             <div className="centered" >
                 <div id="listBoard" className="listBoard">
                     <React.Fragment>
-                        <TodoList todos={todos} toggleTodo={toggleTodo} removeProject={removeProject} removeTask={removeTask} />
+                        <TodoList todos={todos} toggleTodo={toggleTodo} removeProject={removeProject} removeTask={removeTask} addTask={addTask} />
                         <AddTodoForm addTodo={addTodo} />
                     </React.Fragment>
                 </div>
@@ -77,6 +114,7 @@ const ViewPage = () => {
         </div>
 
     );
+
 }
 
 export default ViewPage;

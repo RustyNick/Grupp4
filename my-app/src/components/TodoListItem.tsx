@@ -1,21 +1,20 @@
 import React from 'react'
 import "../TodoListItem.css"
-import { AddTodoForm } from './AddTodoForm'
-import { TodoList } from './TodoList'
-import { initialTodos } from './ViewPage'
+import { AddTaskForm } from './AddTaskForm'
 
 
 interface TodoListItemProps {
     todo: Todo;
     toggleTodo: ToggleTodo;
-    removeProject(projectToDelete: string): void;
-    removeTask(taskToDelete: string): void;
+    removeProject(projectId: string): void;
+    removeTask(taskId: string): void;
+    addTask: AddTask;
 
 }
 
 
 
-export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo, removeProject, removeTask }) => {
+export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo, removeProject, removeTask, addTask }) => {
     const completeCheck = (todo: Todo) => {
         return true
     }
@@ -40,14 +39,23 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo, re
                     <button
                         type="button"
                         onClick={() => {
-                            removeProject(todo.text)
+                            removeProject(todo.id)
                         }}
                     > X
                     </button>
                 </div>
                 <div>
-                    <input type="text" placeholder="todos..."></input>
-                    <button>Add</button>
+                    {/* Add task button */}
+                    {/* <input type="text" placeholder="todos..."></input>
+                    <button type="button" onClick={() => {
+                        console.log("clicked add button")
+                    }}>Add</button> */}
+
+
+                    <React.Fragment>
+                        <AddTaskForm addTask={addTask} />
+                    </React.Fragment>
+
                 </div>
                 <div className="smallListStyle">
 
@@ -65,9 +73,11 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo, re
 
                                 {task.textName}
 
-                                <button onClick={() => {
-                                    removeTask(task.textName)
-                                }} >X</button>
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        removeTask(task.id)
+                                    }} >X</button>
                             </div>
 
 

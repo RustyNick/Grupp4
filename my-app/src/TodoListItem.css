@@ -11,17 +11,22 @@
 }
 .listStyle{
     list-style-type: none;
-    background-color:darkgoldenrod;
-    padding:5px;
-    margin-bottom:5px;
+    background-color:midnightblue;
+    padding:10px;
+    margin-bottom:10px;
+    border-radius: 5px;
 }
 
 .smallListStyle{
+    padding:5px;
     background-color: cornsilk;
+    border-radius: 5px;
+    border-top-left-radius : 0px;
 }
 
 .smallTask{
     display:flex;
+    margin-bottom:5px;
     justify-content:space-between;
     border-bottom:1px solid black;
 }
