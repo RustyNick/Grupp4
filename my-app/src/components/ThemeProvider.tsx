@@ -13,8 +13,8 @@ export const ThemeProvider: React.FC = ({ children }) => {
     setTheme(theme === "ljust" ? "mörkt" : "ljust");
   };
 
-  const color = theme === "ljust" ? "#333" : "#FFF";
-  const backgroundColor = theme === "ljust" ? "#FFF" : "#333";
+  const color = theme === "ljust" ? "#000" : "#FFF";
+  const backgroundColor = theme === "ljust" ? "#FFF" : "#000";
 
   document.body.style.color = color;
   document.body.style.backgroundColor = backgroundColor;
