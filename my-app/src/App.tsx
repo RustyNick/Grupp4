@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from './components/ThemeProvider';
 import './style.css'
-import ErrorBoundary from './components/errorBoundary';
+//import ErrorBoundary from './components/errorBoundary';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import ToDoPage from "./components/ToDoPage";
 import Group4 from "./components/Group4";
@@ -21,7 +21,7 @@ const App: React.FC = () => {
         <div>
           <div className="container">
             <Button variant="contained" color="default" onClick={toggleTheme}>
-              Bytt till {theme === "ljust" ? "mörkt" : "ljust"} läge
+               {theme === "light" ? "dark" : "light"} mode
             </Button>
           </div>
           <Switch>
