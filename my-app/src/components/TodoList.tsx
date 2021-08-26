@@ -1,4 +1,5 @@
 import React from "react";
+import ErrorBoundary from "./ErrorBoundary";
 import { TodoListItem } from "./TodoListItem";
 
 interface TodolistProps {
@@ -13,8 +14,9 @@ export const TodoList: React.FC<TodolistProps> = ({ todos, toggleTodo, removePro
     return (
 
         <ul>
+            
             {todos.map(todo => {
-                return <TodoListItem key={todo.text} todo={todo} toggleTodo={toggleTodo} removeProject={removeProject} removeTask={removeTask} addTask={addTask} />
+                return <ErrorBoundary><TodoListItem key={todo.text} todo={todo} toggleTodo={toggleTodo} removeProject={removeProject} removeTask={removeTask} addTask={addTask} /></ErrorBoundary>
             })}
         </ul>
 
