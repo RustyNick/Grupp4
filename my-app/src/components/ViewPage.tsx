@@ -7,28 +7,11 @@ const genreateId = () => {
 }
 
 
-export const initialTodos: Array<Todo> = [
-    {
-        id: genreateId(), text: "Rubrik 1", deadline: "Deadline", task: [{ id: genreateId(), textName: "en text", }],
-    },
-    {
-        id: genreateId(), text: "Städa", deadline: "08/08/2021", task: [{ id: genreateId(), textName: "Damsuga", }, { id: genreateId(), textName: "Moppa golvet", }, { id: genreateId(), textName: "Torka ytor", }],
-    },
-    {
-        id: genreateId(), text: "Handla", deadline: "10/10/2021", task: [{ id: genreateId(), textName: "Äpplen", }, { id: genreateId(), textName: "Vaniljsås", }],
-    }
-
-]
+export const initialTodos: Array<Todo> = []
 
 
 const ViewPage = () => {
-
-    const theTask = initialTodos.map((task) => {
-        return task.task
-    })
     const [todos, setTodos] = useState(initialTodos);
-    /* const [tasks, SetTasks] = useState(theTask) */
-
 
     const toggleTodo: ToggleTodo = selectedTodo => {
         const newTodos = todos.map(todo => {
@@ -40,6 +23,7 @@ const ViewPage = () => {
         setTodos(newTodos);
     }
 
+    // Sparar och hämtar från Local storage
     useEffect(() => {
         const saved = JSON.parse(localStorage.getItem('todos') || '[]') as Todo[]
         setTodos(saved)
@@ -49,24 +33,21 @@ const ViewPage = () => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos])
 
-
+    //Tar bort en hel todo ur listan/array
     const removeProject: RemoveProject = projectId => {
         setTodos(todos.filter((todo) => {
             return todo.id !== projectId
 
         }))
     }
-
+    // Tar bort en Task i Todo
     const removeTask: RemoveTask = taskId => {
 
         const updatedTodos = todos.map((todo) => {
             const tasks = todo.task.filter((task) => {
                 if (task.id === taskId) {
-                    /* ignore */
                     return false
-                    /* return true */
                 }
-                /* tar id */
                 return true
             })
             const updatedTodos = todo
@@ -76,6 +57,7 @@ const ViewPage = () => {
         setTodos(updatedTodos)
     }
 
+    //Addera en ny Task i Todo
     const addTask: AddTask = (newTask, todoId) => {
 
         const updatedTasks = todos.map((todo) => {
@@ -117,16 +99,6 @@ const ViewPage = () => {
             setTodos([...todos, { id: genreateId(), text: newTodo, deadline: newDeadline, task: [] }])
     }
 
-
-
-    const showArray = () => {
-        for (let i = 0; i < todos.length; i++) {
-            const todoTask = todos[i];
-            console.log(todoTask, todoTask.task)
-
-        }
-    }
-
     return (
         <div>
             <div className="centered" >
@@ -137,7 +109,6 @@ const ViewPage = () => {
                     </React.Fragment>
                 </div>
             </div>
-            {/* <button onClick={showArray}>Show array</button> */}
         </div>
 
     );

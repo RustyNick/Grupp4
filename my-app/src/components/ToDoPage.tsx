@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import '../style.css'
 /* import ErrorBoundary from './ErrorBoundary'; */
 import { useHistory } from 'react-router-dom'
-import { AddTodoForm } from './AddTodoForm';
 import Header from './Head';
-import { TodoList } from './TodoList';
 import Modal from './Modal';
 import ModalView from './ModalView';
 import ViewPage from './ViewPage';
+import { Button } from '@material-ui/core';
 
 const ToDoPage: React.FC = () => {
   const history = useHistory()
@@ -54,7 +53,7 @@ const ToDoPage: React.FC = () => {
         display: 'flex',
         justifyContent: 'center',
       }}>
-        <button onClick={() => setIsModalOpen(true)}>Open modal</button>
+        <Button variant="contained" color="default" onClick={() => setIsModalOpen(true)}>Creators of App</Button>
       </div>
 
       <ViewPage />

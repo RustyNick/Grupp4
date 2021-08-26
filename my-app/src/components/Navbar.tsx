@@ -1,10 +1,12 @@
-import React from "react";
-import { NavLink } from 'react-router-dom'
+import React, { useContext } from "react";
+import { NavLink } from 'react-router-dom';
 
 export const Navbar: React.FunctionComponent = () => (
     <nav>
         <div className="nav-wrapper">
-            <a href="/" className="brand-logo">KA-NI-VI</a>
+            <div className="centered">
+                <a href="/" className="brand-logo">KA-NI-VI</a>
+            </div>
             <ul className="right hide-on-med-and-down">
                 <li><NavLink to="./ToDoPage">Home</NavLink></li>
                 <li><NavLink to="./AboutPage">About us</NavLink></li>

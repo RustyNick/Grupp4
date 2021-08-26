@@ -1,3 +1,6 @@
+import { Button } from '@material-ui/core'
+import HighlightOff from '@material-ui/icons/HighlightOff';
+import DeleteIcon from '@material-ui/icons/Delete';
 import React from 'react'
 import "../TodoListItem.css"
 import { AddTaskForm } from './AddTaskForm'
@@ -35,22 +38,14 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo, re
                         }
                     />
                     {todo.deadline} {/* Deadline renders here */}
-                    <button
-                        type="button"
+                    <Button
                         onClick={() => {
                             removeProject(todo.id)
                         }}
-                    > X
-                    </button>
+                    > <HighlightOff />
+                    </Button>
                 </div>
                 <div>
-                    {/* Add task button */}
-                    {/* <input type="text" placeholder="todos..."></input>
-                    <button type="button" onClick={() => {
-                        console.log("clicked add button")
-                    }}>Add</button> */}
-
-
                     <React.Fragment>
                         <AddTaskForm addTask={addTask} todoId={todo.id} />
                     </React.Fragment>
@@ -72,11 +67,11 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo, re
 
                                 {task.textName}
 
-                                <button
+                                <Button
                                     type="button"
                                     onClick={() => {
                                         removeTask(task.id)
-                                    }} >X</button>
+                                    }} ><DeleteIcon /></Button>
                             </div>
 
 

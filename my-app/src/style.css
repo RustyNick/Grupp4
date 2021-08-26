@@ -24,6 +24,7 @@ body{
     display:flex;
     justify-content: center;
 }
+
 .listBoard{
     padding:10px;
     background-color: cornflowerblue;
