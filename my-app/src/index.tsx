@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import ErrorBoundary from './components/ErrorBoundary';
+/* import ErrorBoundary from './components/ErrorBoundary'; */
 import { ThemeProvider } from './components/ThemeProvider';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <ThemeProvider>
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
   </ThemeProvider>,
   document.getElementById('root')
 

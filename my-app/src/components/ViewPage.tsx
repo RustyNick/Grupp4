@@ -110,7 +110,7 @@ const ViewPage = () => {
                     </React.Fragment>
                 </div>
             </div>
-            <button onClick={showArray}>Show array</button>
+            {/* <button onClick={showArray}>Show array</button> */}
         </div>
 
     );

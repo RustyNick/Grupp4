@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../style.css'
-import ErrorBoundary from './ErrorBoundary';
+/* import ErrorBoundary from './ErrorBoundary'; */
 import { useHistory } from 'react-router-dom'
 import { AddTodoForm } from './AddTodoForm';
 import Header from './Head';
