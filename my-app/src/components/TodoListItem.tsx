@@ -4,6 +4,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import React from 'react'
 import "../TodoListItem.css"
 import { AddTaskForm } from './AddTaskForm'
+import ErrorBoundary from './ErrorBoundary';
 
 
 interface TodoListItemProps {
@@ -38,12 +39,14 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo, re
                         }
                     />
                     {todo.deadline} {/* Deadline renders here */}
+                    <ErrorBoundary>
                     <Button
                         onClick={() => {
                             removeProject(todo.id)
                         }}
                     > <HighlightOff />
                     </Button>
+                    </ErrorBoundary>
                 </div>
                 <div>
                     <React.Fragment>
@@ -67,11 +70,13 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo, re
 
                                 {task.textName}
 
+                                <ErrorBoundary>
                                 <Button
                                     type="button"
                                     onClick={() => {
                                         removeTask(task.id)
                                     }} ><DeleteIcon /></Button>
+                                </ErrorBoundary>
                             </div>
 
 

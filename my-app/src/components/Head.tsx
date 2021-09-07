@@ -4,10 +4,12 @@ import Group4 from "./Group4";
 import AboutPage from "./AboutPage";
 import ToDoPage from "./ToDoPage";
 import { Navbar } from './Navbar';
+import ErrorBoundary from './ErrorBoundary';
 
 
 const Header: React.FC = () => {
     return (
+        <ErrorBoundary>
         <div className="header">
            {/*  <BrowserRouter>
             <Navbar />
@@ -23,6 +25,7 @@ const Header: React.FC = () => {
                 </div>
             </BrowserRouter> */}
         </div>
+        </ErrorBoundary>
     )
 }
 
