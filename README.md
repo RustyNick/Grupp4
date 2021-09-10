@@ -1,10 +1,12 @@
 # Grupp4
 School project
 
-This project is based on NodeJs and will require NodeJs to work properly
+This project is based on NodeJs and will require NodeJs to work properly.
+
 To install and download NodeJs pick your OS and install accordingly from https://nodejs.org/en/download/
 
-When NodeJs is installed navigate to the folder named "my-app" in the built in termninal of your text editor.
+When NodeJs is installed.
+Open VSC and inside the editor navigate to the folder named "my-app" in the built in termninal of your text editor.
 It will look something like this "cd my-app"
 
 When the folder is chosen in the same terminal you install Material UI and React dom 
