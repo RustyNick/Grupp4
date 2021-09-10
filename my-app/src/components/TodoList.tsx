@@ -11,10 +11,11 @@ interface TodolistProps {
 }
 
 export const TodoList: React.FC<TodolistProps> = ({ todos, toggleTodo, removeProject, removeTask, addTask }) => {
+
     return (
 
         <ul>
-            
+
             {todos.map(todo => {
                 return <ErrorBoundary><TodoListItem key={todo.text} todo={todo} toggleTodo={toggleTodo} removeProject={removeProject} removeTask={removeTask} addTask={addTask} /></ErrorBoundary>
             })}

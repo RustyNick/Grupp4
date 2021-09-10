@@ -40,17 +40,17 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo, re
                     />
                     {todo.deadline} {/* Deadline renders here */}
                     <ErrorBoundary>
-                    <Button
-                        onClick={() => {
-                            removeProject(todo.id)
-                        }}
-                    > <HighlightOff />
-                    </Button>
+                        <Button
+                            onClick={() => {
+                                removeProject(todo.id)
+                            }}
+                        > <HighlightOff />
+                        </Button>
                     </ErrorBoundary>
                 </div>
                 <div>
                     <React.Fragment>
-                        <AddTaskForm addTask={addTask} todoId={todo.id} />
+                        <ErrorBoundary> <AddTaskForm addTask={addTask} todoId={todo.id} /></ErrorBoundary>
                     </React.Fragment>
 
                 </div>
@@ -60,7 +60,7 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo, re
                     {todo.task.map((task) => {
                         return (
                             <div className="smallTask">
-                                <label>
+                                <label >
                                     <p>
                                         {/* ----------Materialize styleing on this input!!-------- */}
                                         <input type="checkbox" className="filled-in" />
@@ -70,13 +70,11 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo, re
 
                                 {task.textName}
 
-                                <ErrorBoundary>
                                 <Button
                                     type="button"
                                     onClick={() => {
                                         removeTask(task.id)
                                     }} ><DeleteIcon /></Button>
-                                </ErrorBoundary>
                             </div>
 
 
