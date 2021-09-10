@@ -15,7 +15,7 @@ After that is installed you can now type the following in you terminal:
 It should open our project automatically in your choosen browser,
 if not just copy the localhost adress from the terminal och paste it to your browser and you now be able to access our project
 
-PS
+ATTENTION! ATTENTION! ATTENTION!
 ErrorBoundary will get a error at start on the components TodoList.trx and TodoListitem.trx because no data has been inputed yet. Once data has been inserted the console will show no error because it can now find a key.
 
 Optional: in case of error
