@@ -13,10 +13,10 @@ When the folder is chosen in the same terminal you install Material UI and React
 using the npm installation metod as shown underneath here:
 
 Material UI
-npm install @material-ui/core @material-ui/icons @types/material-ui
+"npm install @material-ui/core @material-ui/icons @types/material-ui"
 
 React dom
-npm install i @types/react-router-dom
+"npm install i @types/react-router-dom"
 
 After these are installed you can now type the following in you terminal:
 "npm start" 
