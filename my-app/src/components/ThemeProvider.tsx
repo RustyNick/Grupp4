@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ErrorBoundary from "./ErrorBoundary";
 
 type Theme = "light" | "dark";
 type ThemeContext = { theme: Theme; toggleTheme: () => void };
@@ -20,8 +21,10 @@ export const ThemeProvider: React.FC = ({ children }) => {
   document.body.style.backgroundColor = backgroundColor;
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
+    <ErrorBoundary>
+      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        {children}
+      </ThemeContext.Provider>
+    </ErrorBoundary>
   );
 };

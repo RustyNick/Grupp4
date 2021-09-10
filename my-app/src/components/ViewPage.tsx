@@ -1,4 +1,4 @@
-import React, { FC, ChangeEvent, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TodoList } from './TodoList';
 import { AddTodoForm } from './AddTodoForm';
 
@@ -59,7 +59,6 @@ const ViewPage = () => {
 
     //Addera en ny Task i Todo
     const addTask: AddTask = (newTask, todoId) => {
-
         const updatedTasks = todos.map((todo) => {
             if (todo.id === todoId) {
                 todo.task.push({ id: genreateId(), textName: newTask, })
@@ -69,8 +68,7 @@ const ViewPage = () => {
         })
 
 
-        console.log(updatedTasks)
-        console.log("AddTask")
+
         setTodos(updatedTasks)
     }
 

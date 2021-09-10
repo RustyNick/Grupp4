@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import '../style.css'
-/* import ErrorBoundary from './ErrorBoundary'; */
-import { useHistory } from 'react-router-dom'
 import Header from './Head';
 import Modal from './Modal';
 import ModalView from './ModalView';
 import ViewPage from './ViewPage';
 import { Button } from '@material-ui/core';
+import ErrorBoundary from './ErrorBoundary';
 
 const ToDoPage: React.FC = () => {
-  const history = useHistory()
   const [isModalopen, setIsModalOpen] = useState(false)
   return (
     <div >
@@ -53,7 +51,7 @@ const ToDoPage: React.FC = () => {
         display: 'flex',
         justifyContent: 'center',
       }}>
-        <Button variant="contained" color="default" onClick={() => setIsModalOpen(true)}>Creators of App</Button>
+        <ErrorBoundary> <Button variant="contained" color="default" onClick={() => setIsModalOpen(true)}>Creators of App</Button></ErrorBoundary>
       </div>
 
       <ViewPage />

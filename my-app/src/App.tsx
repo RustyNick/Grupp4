@@ -21,15 +21,15 @@ const App: React.FC = () => {
         <div>
           <div className="container">
             <ErrorBoundary>
-            <Button size="small" variant="contained" color="default" onClick={toggleTheme}>
-               {theme === "light" ? "dark" : "light"} mode
-            </Button>
+              <Button size="small" variant="contained" color="default" onClick={toggleTheme}>
+                {theme === "light" ? "dark" : "light"} mode
+              </Button>
             </ErrorBoundary>
           </div>
           <Switch>
-              <Route component={ToDoPage} path="/" exact />
-              <Route component={Group4} path="/Group4" />
-              <Route component={AboutPage} path="/AboutPage" />
+            <Route component={ToDoPage} path="/" exact />
+            <Route component={Group4} path="/Group4" />
+            <Route component={AboutPage} path="/AboutPage" />
             <Redirect to="/" />
           </Switch>
         </div>
